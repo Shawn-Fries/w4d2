@@ -9,8 +9,9 @@ FRUITS = ["apple", "banana", "orange"]
 def reaction(maybe_fruit)
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
-  else 
-    raise StandardError 
+  else
+    puts "Sorry, not a fruit"
+    raise StandardError
   end 
 end
 
@@ -19,7 +20,13 @@ def feed_me_a_fruit
 
   puts "Feed me a fruit! (Enter the name of a fruit:)"
   maybe_fruit = gets.chomp
+  begin
+
   reaction(maybe_fruit) 
+  rescue 
+    puts "Sorry, not a fruit"
+    retry
+  end
 end  
 
 # PHASE 4
